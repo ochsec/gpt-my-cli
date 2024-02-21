@@ -4,8 +4,8 @@
   "description": "Unleash AI to Generate Commands and Wrangle Data",
   "main": "mod.ts",
   "scripts": {
-    "build": "deno compile --output ./build/llm ./src/mod.ts",
-    "dev": "deno run ./src/mod.ts",
+    "build": "deno compile --allow-net --allow-read --allow-env --output ./build/llm ./src/mod.ts",
+    "dev": "deno run --allow-net --allow-read --allow-env ./src/mod.ts",
     "start": "./build/llm"
   },
   "repository": {
