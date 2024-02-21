@@ -1,0 +1,26 @@
+{
+  "name": "gpt-my-cli",
+  "version": "1.0.0",
+  "description": "Unleash AI to Generate Commands and Wrangle Data",
+  "main": "mod.ts",
+  "scripts": {
+    "build": "deno compile --output ./build/llm ./src/mod.ts",
+    "dev": "deno run ./src/mod.ts",
+    "start": "./build/llm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ochsec/gpt-my-cli.git"
+  },
+  "keywords": [
+    "gpt",
+    "llm",
+    "cli"
+  ],
+  "author": "Christopher Ochsenreither",
+  "license": "Apache License Version 2.0",
+  "bugs": {
+    "url": "https://github.com/ochsec/gpt-my-cli/issues"
+  },
+  "homepage": "https://github.com/ochsec/gpt-my-cli#readme"
+}
