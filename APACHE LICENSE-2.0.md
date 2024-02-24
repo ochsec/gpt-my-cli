@@ -1,5 +1,4 @@
-bplist00—_WebMainResource’	
-^WebResourceURL_WebResourceFrameName_WebResourceData_WebResourceMIMEType_WebResourceTextEncodingName_/https://www.apache.org/licenses/LICENSE-2.0.txtPO,ı<html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -201,4 +200,3 @@ bplist00—_WebMainResource’
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-</pre></body></html>Ztext/plainUUTF-8    ( 7 N ` v î ∆ «-¿-À                           -—
