@@ -8,7 +8,7 @@ async function main() {
     const token = await readToken();
     if (token) {
         console.log("Token read.");
-        console.log("Arguments:", args);
+        // console.log("Arguments:", args);
         router(args);
     } else {
         console.log("No token found or failed to read the token.");

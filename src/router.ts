@@ -21,7 +21,7 @@ export default async function router(args: string[], context: any = commandTree)
         if (typeof nextContext === 'function') {
             // Execute the command if it's a function
             const result = await nextContext([...args.slice(1)]);
-            console.log(result);
+            if (result) console.log(result);
         } else if (typeof nextContext === 'object') {
             // If the command is an object, it means there are subcommands. Recurse.
             router(args.slice(1), nextContext);

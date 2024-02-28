@@ -2,6 +2,7 @@ import History, { IMessageItem } from "./History.d.ts";
 import { MessageItem, ITokenUsageResponse } from "./TokenUsage.d.ts";
 
 interface ICompletion {
+    help(): void;
     clearHistory(): void;
     complete(input: string | History): Promise<string | undefined>;
     getHistory(): History;
