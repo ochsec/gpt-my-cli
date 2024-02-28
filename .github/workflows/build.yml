@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Deno
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: '1.38'
+
+    - name: Compile Deno app
+      run: deno compile --allow-net --allow-read --allow-env --output ./build/llm ./src/mod.ts
