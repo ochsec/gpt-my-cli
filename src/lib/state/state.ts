@@ -1,4 +1,4 @@
-import { OpenAIApi } from "npm:openai";
+import { OpenAIApi } from "openai";
 import HistoryType from "../types/History.d.ts"
 import IChatConfig from "../types/IChatConfig.d.ts";
 

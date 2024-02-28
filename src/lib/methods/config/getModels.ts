@@ -1,4 +1,4 @@
-import Engine from "npm:openai";
+import { Engine } from "openai";
 import State from "../../state/state.ts";
 
 async function getOpenAIModels() {
