@@ -2,35 +2,32 @@ import Completion from "./lib/methods/completion/completion.ts";
 import Config from "./lib/methods/config/config.ts";
 import Util from "./lib/methods/utils/util.ts";
 
+const commandTree = {
+    completion: { ...Completion }, // Assuming Completion has methods structured similarly
+    utils: Util,
+    config: Config,
+};
 
-export default function router(args: string[]) {
-    const commands = [
-        ...Object.getOwnPropertyNames(Completion),
-        'utils',
-        'config',
-    ];
+export default async function router(args: string[], context: any = commandTree) {
+    if (args.length === 0) {
+        console.log('No command provided.');
+        return;
+    }
 
-    console.log('Inside router...');
+    const command = args[0];
+    const nextContext = context[command];
 
-    if (commands.includes(args[0])) {
-        console.log(`${args[0]} is a valid command.`)
-        if (args[0] === 'utils' && args[1]) {
-            const subcommands = [
-                ...Object.getOwnPropertyNames(Util),
-            ];
-            if (subcommands.includes(args[1])) {
-                console.log(`${args[1]} is a valid utils subcommand`);
-            }
-        }
-         else if (args[0] === 'config' && args[1]) {
-            const subcommands = [
-                ...Object.getOwnPropertyNames(Config),
-            ];
-            if (subcommands.includes(args[1])) {
-                console.log(`${args[1]} is a valid config subcommand`);
-            }
+    if (nextContext) {
+        if (typeof nextContext === 'function') {
+            // Execute the command if it's a function
+            const result = await nextContext([...args.slice(1)]);
+            console.log(result);
+        } else if (typeof nextContext === 'object') {
+            // If the command is an object, it means there are subcommands. Recurse.
+            router(args.slice(1), nextContext);
         }
     } else {
-        console.log(`${args[0]} is not a command.`)
+        console.log(`${command} is not a valid command.`);
     }
 }
+
