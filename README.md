@@ -54,7 +54,7 @@ Base command: ```llm```
 +-----------------------------------+-------------------+----------------+
 | Write tool in TypeScript and      |                   |                |
 | compile to an executable file     |                   |                |
-| with Deno compile                 |       Build v3    |   Pending      |
+| with Deno compile                 |       Build v3    |   In Progrsss  |
 +-----------------------------------+-------------------+----------------+
 | Unit tests/code coverage          |       Build v3    |   Not started  |
 +-----------------------------------+-------------------+----------------+
