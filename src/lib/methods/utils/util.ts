@@ -7,6 +7,8 @@ import makeDoc from "./makeDoc.ts";
 import saveFile from "./saveFile.ts";
 import setWorkDir from "./setWorkDir.ts";
 import concatFiles from "./concatFiles.ts";
+import readConfig from "./readConfig.ts";
+import updateConfig from "./updateConfig.ts";
 
 const Util: IUtil = {
     articleFromHtml,
@@ -17,6 +19,8 @@ const Util: IUtil = {
     saveFile,
     setWorkDir,
     concatFiles,
+    readConfig,
+    updateConfig,
 };
 
 export default Util;
