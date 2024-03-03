@@ -1,13 +1,14 @@
-import readKeyValueConfig from './readKeyValueConfig.ts';
-import getHomeDirectory  from '../methods/internal/getHomeDirectory.ts';
-import IChatConfig from '../types/IChatConfig.d.ts';
+import readChatConfig from './readLLMConfig.ts';
+import getHomeDirectory from '../methods/internal/getHomeDirectory.ts';
+import ILLMConfig from "../types/ILLMConfig.d.ts";
 import { join } from "https://deno.land/std/path/mod.ts";
 
-export default async function updateKeyValueConfig(key: keyof IChatConfig, value: string | number): Promise<void> {
+export default async function updateChatConfig(key: keyof ILLMConfig, value: string | number): Promise<void> {
     try {
-        let config = await readKeyValueConfig();
+        let config = await readChatConfig();
+
         if (!config) {
-            config = {} as IChatConfig;
+            config = {} as ILLMConfig;
         }
 
         const homeDirectory = getHomeDirectory();
@@ -35,9 +36,12 @@ export default async function updateKeyValueConfig(key: keyof IChatConfig, value
                 break;
             case 'presence_penalty':
                 config[key] = value as number;
-                break;             
+                break;      
+            case 'memory':
+                config[key] = value as number;
+                break;  
             default:
-                throw new Error('Invalid key ${key}')
+                throw new Error(`Invalid key ${key}`)
         }
 
         const updatedConfigLines = Object.entries(config).map(([key, value]) => `${key}=${value}`);

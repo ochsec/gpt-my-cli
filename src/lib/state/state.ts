@@ -3,16 +3,11 @@ import HistoryType from "../types/History.d.ts"
 import IChatConfig from "../types/IChatConfig.d.ts";
 
 export default class State {
-    // static #filePath: string = '~/.llm/config';
     static #openai: OpenAIApi;
     static #models: Array<string> = [];
     static #history: HistoryType = [];
     static #memory = 10;
     static #config: IChatConfig;
-
-    // static getFilePath(): string {
-    //     return State.#filePath;
-    // }
 
     static getOpenAIApi(): OpenAIApi {
         return State.#openai;

@@ -1,5 +1,5 @@
-import State from "../../state/state.ts";
+import updateLLMConfig from "../../state/updateLLMConfig.ts"
 
-export default function setMemory(steps: number): void {
-    State.setMemory(steps);
+export default async function setMaxTokens(steps: number): Promise<void> {
+    await updateLLMConfig('memory', steps);
 }

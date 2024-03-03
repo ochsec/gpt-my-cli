@@ -3,7 +3,7 @@ import Config from "./lib/methods/config/config.ts";
 import Util from "./lib/methods/utils/util.ts";
 
 const commandTree = {
-    completion: { ...Completion }, // Assuming Completion has methods structured similarly
+    ...Completion,
     utils: Util,
     config: Config,
 };

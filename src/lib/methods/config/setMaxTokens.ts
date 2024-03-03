@@ -1,7 +1,5 @@
-import State from "../../state/state.ts";
+import updateChatConfig from "../../state/updateLLMConfig.ts";
 
-export default function setMaxTokens(n: number): void {
-    const config = State.getConfig();
-    config.max_tokens = n;
-    State.setConfig(config);
+export default async function setMaxTokens(n: number): Promise<void> {
+    await updateChatConfig('max_tokens', n);
 }

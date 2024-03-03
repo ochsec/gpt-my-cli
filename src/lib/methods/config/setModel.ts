@@ -1,12 +1,10 @@
-import State from "../../state/state.ts";
+import updateChatConfig from "../../state/updateLLMConfig.ts";
 import validateModel from "./validateModel.ts";
 
-export default function setModel(model: string): void {
+export default async function setModel(model: string): Promise<void> {
     if (validateModel(model)) {
-        const config = State.getConfig();
-        config.model = model;
-        State.setConfig(config);
+        await updateChatConfig('model', model);
     } else {
-        console.log(`Model '${model}' is not in OpenAI's available models list.`);            
+        console.log(`Model '${model}' is not in OpenAI's available models list.`);
     }
 }

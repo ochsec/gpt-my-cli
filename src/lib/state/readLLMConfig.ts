@@ -1,8 +1,8 @@
-import IChatConfig from '../types/IChatConfig.d.ts';
+import ILLMConfig from "../types/ILLMConfig.d.ts";
 import getHomeDirectory from "../methods/internal/getHomeDirectory.ts";
 import { join } from "https://deno.land/std/path/mod.ts";
 
-export default async function readKeyValueConfig(): Promise<IChatConfig | undefined> {
+export default async function readChatConfig(): Promise<ILLMConfig | undefined> {
     try {
         const homeDirectory = getHomeDirectory();
         if (!homeDirectory) {
@@ -11,13 +11,14 @@ export default async function readKeyValueConfig(): Promise<IChatConfig | undefi
         }
         const fileContent = await Deno.readTextFile(join(homeDirectory, '.llm', 'config'));
         const configLines = fileContent.split('\n');
-        const config: IChatConfig = {
+        const config: ILLMConfig = {
             model: 'gpt-3.5-turbo-16k',
             temperature: 0,
             top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0,
             max_tokens: undefined,
+            memory: 0,
         };
         for (const line of configLines) {
             const [key, value] = line.split('=');
@@ -40,10 +41,12 @@ export default async function readKeyValueConfig(): Promise<IChatConfig | undefi
                 case 'max_tokens':
                     config['max_tokens'] = parseInt(value);
                     break;
+                case 'memory':
+                    config['memory'] = parseInt(value);
             }
 
         }
-        return config as IChatConfig;
+        return config as ILLMConfig;
     } catch (error) {
         console.error('Failed to read key=value configuration:', error);
     }
