@@ -1,11 +1,9 @@
-import State from "../../state/state.ts";
+import updateKeyValueConfig from "../../state/updateKeyValueConfig.ts";
 import validateTemp from "./validateTemp.ts";
 
-export default function setTemp(temp: number): void {
+export default async function setTemp(temp: number): Promise<void> {
     if (validateTemp(temp)) {
-        const config = State.getConfig();
-        config.temperature = temp;
-        State.setConfig(config);
+        await updateKeyValueConfig('temperature', temp);
     } else {
         console.log(`Temperature must be between 0 and 1`);
     }

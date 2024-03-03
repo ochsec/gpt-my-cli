@@ -9,8 +9,6 @@ interface IUtil {
     htmlToMarkdown(html: string): string;
     makeDoc(url: string): Promise<string | null>;
     concatFiles(filename: string, extensions: Array<string>): Promise<string>;
-    readConfig(args: string[]): Promise<void>;
-    updateConfig(args: string[]): Promise<void>;
 }
 
 export default IUtil;
