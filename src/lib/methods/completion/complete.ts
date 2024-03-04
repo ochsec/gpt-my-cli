@@ -4,26 +4,27 @@ import readLLMConfig from "../../state/readLLMConfig.ts";
 import IChatConfig from "../../types/IChatConfig.d.ts";
 import HistoryType from "../../types/History.d.ts";
 
-export default async function complete(input: string): Promise<string | undefined> {
+export default async function complete(args: string[]): Promise<string | undefined> {
     const openai = State.getOpenAIApi();
     const config = await readLLMConfig();
     if (config) {
-        let message: IMessageItem, messages: Array<IMessageItem> = [];
+        let message: IMessageItem;
+        const messages: Array<IMessageItem> = [];
         // let history = State.getHistory();
         let history = [] as HistoryType[];
-    
-        if (typeof input === 'string') {
-        console.log("Entered type of input === 'string': ", input);
-            message = {role: 'user', content: input};
+
+        if (typeof args[0] === 'string') {
+            console.log("Entered type of input === 'string': ", args[0]);
+            message = { role: 'user', content: args[0] };
             messages.push(message);
-            history = [ ...history, messages ];
+            history = [...history, messages];
         } else {
             // Let API handle malformed message arrays in error response
-            history = [...history, ...input];
+            history = [...history, ...args[0]];
         }
-    
+
         // State.setHistory(history);
-    
+
         // Set memory
         if (history.length > config['memory']) {
             history = history.slice(config['memory']);
@@ -31,7 +32,18 @@ export default async function complete(input: string): Promise<string | undefine
         // } else {
         //     messages = history;
         // }
-        const params = Object.assign(config as IChatConfig, { messages: messages });
+
+        const { model, temperature, top_p, frequency_penalty, presence_penalty, max_tokens } = config;
+
+        const params = {
+            model,
+            temperature,
+            top_p,
+            frequency_penalty,
+            presence_penalty,
+            max_tokens,
+            messages: messages,
+        };
         console.log(params);
         try {
             const response = await openai.createChatCompletion(params);

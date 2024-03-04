@@ -4,7 +4,7 @@ import { MessageItem, ITokenUsageResponse } from "./TokenUsage.d.ts";
 interface ICompletion {
     help(): void;
     clearHistory(): void;
-    complete(input: string | History): Promise<string | undefined>;
+    complete(args: string[] | History): Promise<string | undefined>;
     getHistory(): History;
     getLast(): IMessageItem
     loadHistory(filePath: string): void;
