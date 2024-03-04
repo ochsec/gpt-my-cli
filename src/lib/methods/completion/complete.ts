@@ -12,15 +12,15 @@ export default async function complete(input: string): Promise<string | undefine
         // let history = State.getHistory();
         let history = [] as HistoryType[];
     
-        // if (typeof input === 'string') {
-        console.log("Entered type of input === 'string'");
-        message = {role: 'user', content: input};
-        messages.push(message);
-        history = [ ...history, messages ];
-        // } else {
+        if (typeof input === 'string') {
+        console.log("Entered type of input === 'string': ", input);
+            message = {role: 'user', content: input};
+            messages.push(message);
+            history = [ ...history, messages ];
+        } else {
             // Let API handle malformed message arrays in error response
-        //     history = [...history, ...input];
-        // }
+            history = [...history, ...input];
+        }
     
         // State.setHistory(history);
     

@@ -1,7 +1,7 @@
-import IChatConfig from "./IChatConfig.d.ts";
+import ILLMConfig from "./ILLMConfig.d.ts";
 
 interface IConfig {
-    getConfig(): IChatConfig;
+    getConfig(): Promise<ILLMConfig | undefined>;
     getMemory(): number;
     getModels(): Promise<string[]>;
     setDefaultConfig(): void;
