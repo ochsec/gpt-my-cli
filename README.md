@@ -60,7 +60,7 @@ Base command: ```llm```
 +-----------------------------------+-------------------+----------------+
 | Web site Documentation            |       Build v3    |   Not started  |
 +-----------------------------------+-------------------+----------------+
-| Port to Go or Rust for size/      |                   |                |
+| Port to Go for size/              |                   |                |
 | performance optimization          |   Post-Build v3   |   Not started  |
 +-----------------------------------+-------------------+----------------+
 | Add additional LLMs               |   Post-Build v3   |   Not started  |
