@@ -1,0 +1,1 @@
+How can I list the file sizes of in a directory in a zsh terminal?

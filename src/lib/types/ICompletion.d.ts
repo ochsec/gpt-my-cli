@@ -10,6 +10,7 @@ interface ICompletion {
     loadHistory(filePath: string): void;
     saveHistory(filePath: string): void;
     tokenUsage(messages: MessageItem[]): ITokenUsageResponse;
+    setSession(args: string[]): Promise<void>
 }
 
 export default ICompletion;

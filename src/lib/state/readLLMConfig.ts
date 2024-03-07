@@ -19,6 +19,7 @@ export default async function readChatConfig(): Promise<ILLMConfig | undefined> 
             presence_penalty: 0,
             max_tokens: undefined,
             memory: 0,
+            session: 'default',
         };
         for (const line of configLines) {
             const [key, value] = line.split('=');
@@ -43,6 +44,10 @@ export default async function readChatConfig(): Promise<ILLMConfig | undefined> 
                     break;
                 case 'memory':
                     config['memory'] = parseInt(value);
+                    break;
+                case 'session':
+                    config['session'] = value;
+                    break;
             }
 
         }

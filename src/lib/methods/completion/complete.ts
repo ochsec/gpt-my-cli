@@ -44,7 +44,7 @@ export default async function complete(args: string[]): Promise<string | undefin
             max_tokens,
             messages: messages,
         };
-        console.log(params);
+        // console.log(params);
         try {
             const response = await openai.createChatCompletion(params);
             const answer = response.data?.choices[0]?.message?.content;

@@ -1,7 +1,7 @@
 import ILLMConfig from "../../types/ILLMConfig.d.ts";
-import readChatConfig from "../../state/readLLMConfig.ts";
+import readLLMConfig from "../../state/readLLMConfig.ts";
 
 export default async function getConfig(): Promise<ILLMConfig | undefined> {
-    const config = await readChatConfig();
+    const config = await readLLMConfig();
     return config;
 }

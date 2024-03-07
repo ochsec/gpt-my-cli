@@ -7,6 +7,7 @@ import loadHistory from "./loadHistory.ts";
 import saveHistory from "./saveHistory.ts";
 import tokenUsage from "./tokenUsage.ts";
 import help from "./help.ts";
+import setSession from "./setSession.ts";
 
 const Completion: ICompletion = {
     help,
@@ -17,6 +18,7 @@ const Completion: ICompletion = {
     loadHistory,
     saveHistory,
     tokenUsage,
+    setSession,
 };
 
 export default Completion;

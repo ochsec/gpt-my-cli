@@ -40,6 +40,9 @@ export default async function updateChatConfig(key: keyof ILLMConfig, value: str
             case 'memory':
                 config[key] = value as number;
                 break;  
+            case 'session':
+                config[key] = value as string;
+                break;
             default:
                 throw new Error(`Invalid key ${key}`)
         }

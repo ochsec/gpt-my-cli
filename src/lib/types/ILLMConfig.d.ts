@@ -6,4 +6,5 @@ export default interface ILLMConfig {
     frequency_penalty: number;
     presence_penalty: number;
     memory: number;
+    session: string;
 }
