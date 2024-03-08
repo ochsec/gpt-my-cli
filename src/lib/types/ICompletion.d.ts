@@ -6,7 +6,7 @@ interface ICompletion {
     clearHistory(): void;
     complete(args: string[] | History): Promise<string | undefined>;
     getLast(): Promise<string | void>
-    tokenUsage(messages: MessageItem[]): ITokenUsageResponse;
+    tokenUsage(messages: MessageItem[]): Promise<ITokenUsageResponse | undefined>;
     setSession(args: string[]): Promise<void>
 }
 
