@@ -11,13 +11,15 @@ export default async function complete(args: string[]): Promise<string | undefin
         let message: IMessageItem;
         const messages: Array<IMessageItem> = [];
         // let history = State.getHistory();
-        let history = [] as HistoryType[];
+        // let history = [] as HistoryType[];
+
+        let history = await State.getSession(config.session) || [];
 
         if (typeof args[0] === 'string') {
             console.log("Entered type of input === 'string': ", args[0]);
             message = { role: 'user', content: args[0] };
             messages.push(message);
-            history = [...history, messages];
+            history = [...history, ...messages];
         } else {
             // Let API handle malformed message arrays in error response
             history = [...history, ...args[0]];
@@ -49,11 +51,11 @@ export default async function complete(args: string[]): Promise<string | undefin
             const response = await openai.createChatCompletion(params);
             const answer = response.data?.choices[0]?.message?.content;
             console.log(answer);
-            history.push([{
+            history.push({
                 role: 'system',
                 content: answer,
-            }]);
-            // State.setHistory(history);
+            });
+            await State.setSession(config.session, history);
             return answer;
         } catch (error) {
             throw new Error(error);

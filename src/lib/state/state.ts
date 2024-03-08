@@ -1,6 +1,8 @@
 import { OpenAIApi } from "openai";
 import HistoryType from "../types/History.d.ts"
 import IChatConfig from "../types/IChatConfig.d.ts";
+import readSession from "./readSession.ts";
+import updateSession from './updateSession.ts';
 
 export default class State {
     static #openai: OpenAIApi;
@@ -23,6 +25,14 @@ export default class State {
 
     static setModels(models: string[]) {
         State.#models = models;
+    }
+
+    static getSession(name: string): Promise<HistoryType | undefined> {
+        return readSession(name);
+    }
+
+    static async setSession(name: string, session: HistoryType): Promise<void> {
+        await updateSession(name, session);
     }
 
     static getHistory(): HistoryType {
