@@ -1,6 +1,7 @@
 import Completion from "./lib/methods/completion/completion.ts";
 import Config from "./lib/methods/config/config.ts";
 import Util from "./lib/methods/utils/util.ts";
+import hyphenatedToCamelCase from "./lib/methods/internal/hyphenatedToCamelCase.ts";
 
 const commandTree = {
     ...Completion,
@@ -14,7 +15,7 @@ export default async function router(args: string[], context: any = commandTree)
         return;
     }
 
-    const command = args[0];
+    const command = hyphenatedToCamelCase(args[0]);
     const nextContext = context[command];
 
     if (nextContext) {
