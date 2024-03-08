@@ -1,14 +1,8 @@
-import { ArticleData } from "@extractus/article-extractor";
-
 interface IUtil {
-    setWorkDir(dirPath: string): void;
-    saveFile(filePath: string, data: object | string): void;
-    loadFile(filePath: string): string;
-    fetchTextData (url: string): Promise<string>
-    articleFromHtml(html: string): Promise<ArticleData | null>;
+    fetchTextData (args: string[]): Promise<string>
     htmlToMarkdown(html: string): string;
-    makeDoc(url: string): Promise<string | null>;
-    concatFiles(filename: string, extensions: Array<string>): Promise<string>;
+    makeDoc(args: string[]): Promise<string | null>;
+    concatFiles(args: string[]): Promise<string>;
 }
 
 export default IUtil;

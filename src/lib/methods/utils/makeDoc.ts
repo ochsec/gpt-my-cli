@@ -2,9 +2,9 @@ import articleFromHtml from "./articleFromHtml.ts";
 import fetchTextData from "./fetchTextData.ts";
 import htmlToMarkdown from "./htmlToMarkdown.ts";
 
-export default async function makeDoc (url: string): Promise<string | null> {
+export default async function makeDoc (args: string[]): Promise<string | null> {
     try {
-        const html = await fetchTextData(url);
+        const html = await fetchTextData(args);
         const article = await articleFromHtml(html);
         if (!article) return null;
 
