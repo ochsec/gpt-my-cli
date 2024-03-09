@@ -6,11 +6,7 @@
 
 1. [Summary](#summary)
 2. [Commands](#commands)
-3. [Plan of Attack](#plan-of-attack)
-
-This is an entrant to the [backdropbuild v3](https://backdropbuild.com/) Build & Launch challenge
-
-<img src="https://raw.githubusercontent.com/ochsec/gpt-my-cli/main/backdropbuild.png" />
+3. [Development Plan](#plan-of-attack)
 
 Description of project: A command line tool with a suite of commands to integrate an llm into the command line workflow. MVP will integrate OpenAI's GPT models.
 
@@ -24,14 +20,17 @@ Base command: ```llm```
 └── llm
     ├── complete
     ├── get-last
-    ├── get-history
-    ├── save-history
+    ├── set-session
     ├── token-usage
+    ├── view-session
+    ├── which-session
     ├── ...
     ├── config
     │   ├── get-config
-    │   ├── set-model
+    │   ├── 
     │   ├── set-memory
+    │   ├── set-models
+    │   ├── set-default-config    
     │   ├── set-max-tokens
     │   └── ...
     └── util
