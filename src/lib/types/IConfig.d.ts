@@ -9,7 +9,7 @@ interface IConfig {
     setMemory(steps: number): void;
     setModel(model: string): void;
     setTemp(temp: number): void;
-    validateModel(model: string): boolean;
+    validateModel(model: string): Promise<boolean>;
     validateTemp (temp: number): boolean;
 }
 
