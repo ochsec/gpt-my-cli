@@ -3,7 +3,6 @@ import { MessageItem, ITokenUsageResponse } from "./TokenUsage.d.ts";
 
 interface ICompletion {
     help(): void;
-    clearHistory(): void;
     complete(args: string[] | History): Promise<string | undefined>;
     getLast(): Promise<string | void>
     tokenUsage(messages: MessageItem[]): Promise<ITokenUsageResponse | undefined>;
