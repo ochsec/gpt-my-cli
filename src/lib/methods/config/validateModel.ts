@@ -1,5 +1,6 @@
-import State from "../../state/state.ts";
+import getModels from "./getModels.ts";
 
-export default function validateModel(model: string): boolean {
-    return State.getModels().includes(model);
+export default async function validateModel(model: string): Promise<boolean> {
+    const models = await getModels();
+    return models.includes(model);
 }
